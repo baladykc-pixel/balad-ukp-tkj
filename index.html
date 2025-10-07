@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart-Tech - Solusi Teknologi & Layanan Resmi Sekolah (RGB Theme)</title>
+    <!-- Memuat Tailwind CSS untuk styling cepat dan responsif -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* ====================
+           RGB THEME COLOR PALETTE
+           ==================== */
+        :root {
+            --bg-dark: #12121e; /* Darker Navy/Black for background */
+            --bg-card: #1e1e30; /* Lighter dark for cards */
+            --rgb-cyan: #00FFFF; /* Primary RGB Cyan */
+            --rgb-magenta: #FF00FF; /* Secondary RGB Magenta */
+            --rgb-red: #FF3333; /* RGB Red accent */
+            --rgb-green: #33FF33; /* RGB Green accent */
+            --text-light: #EFEFEF; /* Light text on dark background */
+        }
+
+        /* Keyframe Animation for RGB Pulse */
+        @keyframes rgb-pulse {
+            0% { box-shadow: 0 0 10px var(--rgb-cyan); }
+            33% { box-shadow: 0 0 10px var(--rgb-magenta); }
+            66% { box-shadow: 0 0 10px var(--rgb-red); }
+            100% { box-shadow: 0 0 10px var(--rgb-cyan); }
+        }
+
+        /* Keyframe Animation for Text RGB Glow */
+        @keyframes text-rgb-glow {
+            0% { text-shadow: 0 0 8px var(--rgb-cyan), 0 0 15px var(--rgb-cyan); }
+            33% { text-shadow: 0 0 8px var(--rgb-magenta), 0 0 15px var(--rgb-magenta); }
+            66% { text-shadow: 0 0 8px var(--rgb-red), 0 0 15px var(--rgb-red); }
+            100% { text-shadow: 0 0 8px var(--rgb-cyan), 0 0 15px var(--rgb-cyan); }
+        }
+
+        /* Mengatur font dasar dan menghilangkan margin/padding default */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark); /* TEMA GELAP */
+            color: var(--text-light); /* Teks terang */
+        }
+
+        /* Kelas utilitas kustom untuk warna dan efek */
+        .primary-color { color: var(--rgb-cyan); }
+        .bg-neon-primary { background-color: var(--rgb-cyan); color: var(--bg-dark); } 
+        .text-secondary { color: var(--rgb-magenta); }
+
+        /* Scroll Behavior untuk Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Styling spesifik untuk Navigasi (Sticky) */
+        #navbar {
+            background-color: var(--bg-dark);
+            transition: all 0.3s ease;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            /* RGB Pulse Animation */
+            box-shadow: 0 0 12px rgba(0, 255, 255, 0.5); 
+            animation: rgb-pulse 4s infinite alternate; 
+        }
+
+        /* Hero Headline Glow Animation */
+        #hero h1 {
+            animation: text-rgb-glow 5s infinite alternate;
+        }
+        
+        /* Card Hover Effect: Efek glow saat dihover */
+        .service-card {
+            background-color: var(--bg-card); /* Card Background Gelap */
+            transition: all 0.5s ease;
+            border: 1px solid #333;
+        }
+        .service-card:hover {
+            transform: scale(1.03); /* Subtle scale up */
+            /* Multi-color shadow for RGB feel */
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.6), 0 0 40px rgba(255, 0, 255, 0.3), 0 0 60px rgba(255, 51, 51, 0.2);
+        }
+        
+        /* Mobile Navigation Overlay */
+        #nav-menu.active {
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background-color: var(--bg-dark);
+            border-top: 1px solid #333;
+            padding: 1rem 0;
+        }
+
+        /* Icon styling (menggunakan emoji sebagai pengganti ikon lib) */
+        .icon-large {
+            font-size: 2.5rem;
+            margin-bottom: 0.75rem;
+            color: var(--rgb-cyan);
+            display: block;
+            text-align: center;
+            text-shadow: 0 0 5px var(--rgb-cyan), 0 0 10px var(--rgb-magenta); /* Dual glow */
+        }
+
+        /* Mengubah warna tautan navigasi menjadi terang */
+        #nav-menu a {
+            color: var(--text-light) !important;
+        }
+        #nav-menu a:hover {
+            color: var(--rgb-cyan) !important;
+        }
+
+        /* Custom Project Card Borders for RGB feel */
+        .project-card-1 { border: 2px solid var(--rgb-cyan); }
+        .project-card-2 { border: 2px solid var(--rgb-magenta); }
+        .project-card-3 { border: 2px solid var(--rgb-red); }
+    </style>
+</head>
+<body>
+
+    <!-- Bagian 1: Header/Navigasi -->
+    <header id="navbar" class="py-4">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <a href="#hero" class="text-3xl font-bold primary-color tracking-wider">Smart-Tech</a>
+            
+            <!-- Hamburger Menu (Mobile) -->
+            <button id="menu-toggle" class="lg:hidden p-2 text-white focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+
+            <!-- Menu Navigasi (Desktop) -->
+            <nav id="nav-menu" class="hidden lg:flex lg:items-center space-x-6">
+                <a href="#hero" class="hover:text-cyan-400 font-medium transition duration-300">Beranda</a>
+                <a href="#services" class="hover:text-cyan-400 font-medium transition duration-300">Layanan Kami</a>
+                <a href="#portfolio" class="hover:text-cyan-400 font-medium transition duration-300">Portofolio</a>
+                <a href="#keunggulan" class="hover:text-cyan-400 font-medium transition duration-300">Keunggulan</a>
+                <!-- Tombol Kontak dengan efek neon -->
+                <a href="#contact" class="bg-neon-primary hover:bg-white text-gray-900 px-4 py-2 rounded-full font-semibold transition duration-300 shadow-lg">Kontak Resmi</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Bagian 2: Hero Section -->
+    <section id="hero" class="bg-black text-white py-20 md:py-32 border-b-4 border-rgb-cyan">
+        <div class="container mx-auto px-4 text-center">
+            <!-- Headline dengan animasi RGB glow -->
+            <h1 class="text-4xl md:text-6xl font-extrabold mb-4 leading-tight primary-color">Inovasi Teknologi, Solusi Sekolah Anda.</h1>
+            <p class="text-xl md:text-2xl mb-8 text-gray-300">Unit Produksi Smart-Tech Sekolah — Kontribusi Nyata dari Siswa Berbakat.</p>
+            <a href="#services" class="inline-block bg-neon-primary hover:bg-white text-gray-900 px-8 py-3 rounded-full text-lg font-bold transition duration-300 shadow-lg">Jelajahi Layanan Kami &rarr;</a>
+        </div>
+    </section>
+
+    <!-- Bagian 3: Layanan Kami (Services Section) -->
+    <section id="services" class="py-16 md:py-24">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 primary-color">Layanan Teknis Unggulan Kami</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                
+                <!-- Card 1: Pengembangan Web -->
+                <div class="service-card p-6 rounded-xl shadow-md">
+                    <span class="icon-large">💻</span>
+                    <h3 class="text-xl font-semibold mb-3 primary-color">Pengembangan Sistem/Aplikasi Web</h3>
+                    <p class="text-gray-400">Pembuatan situs sekolah, sistem informasi akademik, dan platform digital kustom untuk efisiensi administrasi.</p>
+                </div>
+                
+                <!-- Card 2: Jaringan -->
+                <div class="service-card p-6 rounded-xl shadow-md">
+                    <span class="icon-large">🌐</span>
+                    <h3 class="text-xl font-semibold mb-3 primary-color">Jaringan & Infrastruktur IT</h3>
+                    <p class="text-gray-400">Instalasi, konfigurasi, dan pemeliharaan jaringan kabel/nirkabel sekolah untuk konektivitas yang stabil dan aman.</p>
+                </div>
+
+                <!-- Card 3: Hardware -->
+                <div class="service-card p-6 rounded-xl shadow-md">
+                    <span class="icon-large">🛠️</span>
+                    <h3 class="text-xl font-semibold mb-3 primary-color">Perbaikan Hardware & Maintenance</h3>
+                    <p class="text-gray-400">Layanan perbaikan PC, laptop, printer, dan kontrak pemeliharaan rutin untuk hardware sekolah.</p>
+                </div>
+
+                <!-- Card 4: Multimedia -->
+                <div class="service-card p-6 rounded-xl shadow-md">
+                    <span class="icon-large">🎨</span>
+                    <h3 class="text-xl font-semibold mb-3 primary-color">Desain Grafis & Multimedia Sekolah</h3>
+                    <p class="text-gray-400">Produksi konten visual dan video profesional untuk branding, promosi, dan dokumentasi acara sekolah.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Bagian 4: Portofolio (Ganti URL Placeholder dengan Gambar Anda) -->
+    <section id="portfolio" class="py-16 md:py-24 bg-[#111122]">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 primary-color">Proyek yang Telah Kami Kerjakan</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <!-- Project Card 1 (Cyan Border) - Ganti 'src' dengan URL gambar Anda -->
+                <div class="bg-card rounded-xl shadow-lg overflow-hidden project-card-1">
+                    <!-- SILAKAN GANTI './gambar-proyek-1.jpg' dengan URL atau path gambar Anda yang sebenarnya -->
+                    <img src="./gambar-proyek-1.jpg" onerror="this.onerror=null;this.src='https://placehold.co/600x400/1a1a2e/00FFFF?text=GANTI+DENGAN+GAMBAR+ANDA';" alt="Sistem Manajemen Perpustakaan Digital" class="w-full h-48 object-cover opacity-70 hover:opacity-100 transition duration-300">
+                    <div class="p-6">
+                        <h4 class="text-xl font-semibold primary-color mb-2">Sistem Manajemen Perpustakaan Digital</h4>
+                        <p class="text-sm text-gray-400">Kategori: Pengembangan Sistem</p>
+                    </div>
+                </div>
+
+                <!-- Project Card 2 (Magenta Border) - Ganti 'src' dengan URL gambar Anda -->
+                <div class="bg-card rounded-xl shadow-lg overflow-hidden project-card-2">
+                    <!-- SILAKAN GANTI './gambar-proyek-2.jpg' dengan URL atau path gambar Anda yang sebenarnya -->
+                    <img src="./gambar-proyek-2.jpg" onerror="this.onerror=null;this.src='https://placehold.co/600x400/1a1a2e/FF00FF?text=GANTI+DENGAN+GAMBAR+ANDA';" alt="Instalasi Jaringan Fiber Optic Sekolah" class="w-full h-48 object-cover opacity-70 hover:opacity-100 transition duration-300">
+                    <div class="p-6">
+                        <h4 class="text-xl font-semibold primary-color mb-2">Instalasi Jaringan Fiber Optic Sekolah</h4>
+                        <p class="text-sm text-gray-400">Kategori: Jaringan & Infrastruktur</p>
+                    </div>
+                </div>
+
+                <!-- Project Card 3 (Red Border) - Ganti 'src' dengan URL gambar Anda -->
+                <div class="bg-card rounded-xl shadow-lg overflow-hidden project-card-3">
+                    <!-- SILAKAN GANTI './gambar-proyek-3.jpg' dengan URL atau path gambar Anda yang sebenarnya -->
+                    <img src="./gambar-proyek-3.jpg" onerror="this.onerror=null;this.src='https://placehold.co/600x400/1a1a2e/FF3333?text=GANTI+DENGAN+GAMBAR+ANDA';" alt="Video Profil Sekolah 2024" class="w-full h-48 object-cover opacity-70 hover:opacity-100 transition duration-300">
+                    <div class="p-6">
+                        <h4 class="text-xl font-semibold primary-color mb-2">Video Profil Sekolah 2024</h4>
+                        <p class="text-sm text-gray-400">Kategori: Multimedia</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Bagian 5: Keunggulan Smart-Tech -->
+    <section id="keunggulan" class="py-16 bg-[#0d0d18] text-white">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-8 primary-color">Mengapa Memilih Smart-Tech?</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                <div class="p-4 bg-card rounded-lg shadow-lg border border-rgb-magenta" style="box-shadow: 0 0 15px rgba(255, 0, 255, 0.3);">
+                    <span class="text-4xl block mb-3 text-secondary">🎓</span>
+                    <h3 class="text-xl font-semibold mb-2">Kualitas Pelajar SMK</h3>
+                    <p class="text-gray-300">Dikerjakan oleh siswa/i terpilih dengan bimbingan guru profesional, menjamin kualitas dan inovasi terbaru.</p>
+                </div>
+                <div class="p-4 bg-card rounded-lg shadow-lg border border-rgb-magenta" style="box-shadow: 0 0 15px rgba(255, 0, 255, 0.3);">
+                    <span class="text-4xl block mb-3 text-secondary">💰</span>
+                    <h3 class="text-xl font-semibold mb-2">Harga Kompetitif</h3>
+                    <p class="text-gray-300">Solusi biaya yang lebih efisien dibandingkan pihak ketiga, dengan semangat pengabdian komunitas.</p>
+                </div>
+                <div class="p-4 bg-card rounded-lg shadow-lg border border-rgb-magenta" style="box-shadow: 0 0 15px rgba(255, 0, 255, 0.3);">
+                    <span class="text-4xl block mb-3 text-secondary">🤝</span>
+                    <h3 class="text-xl font-semibold mb-2">Dukungan Penuh Sekolah</h3>
+                    <p class="text-gray-300">Kami menjamin layanan purna jual yang mudah diakses karena kami bagian dari ekosistem sekolah.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bagian 6: Kontak Resmi (Contact Section) -->
+    <section id="contact" class="py-16 md:py-24">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 primary-color">Hubungi Kami Sekarang</h2>
+            
+            <div class="max-w-4xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 bg-card p-8 rounded-xl border border-rgb-magenta" style="box-shadow: 0 0 15px rgba(255, 0, 255, 0.5);">
+                
+                <!-- Formulir Kontak -->
+                <div>
+                    <h3 class="text-2xl font-semibold mb-6 text-white">Kirimkan Permintaan Anda</h3>
+                    <form id="contact-form" class="space-y-4">
+                        <input type="text" id="name" placeholder="Nama Lengkap/Instansi" required class="w-full p-3 border border-rgb-cyan bg-gray-800 text-white rounded-lg focus:ring-cyan-400 focus:border-cyan-400">
+                        <input type="email" id="email" placeholder="Email Resmi Anda" required class="w-full p-3 border border-rgb-cyan bg-gray-800 text-white rounded-lg focus:ring-cyan-400 focus:border-cyan-400">
+                        <input type="text" id="subject" placeholder="Subjek Layanan yang Dibutuhkan" required class="w-full p-3 border border-rgb-cyan bg-gray-800 text-white rounded-lg focus:ring-cyan-400 focus:border-cyan-400">
+                        <textarea id="message" rows="4" placeholder="Jelaskan kebutuhan teknis Anda secara rinci..." required class="w-full p-3 border border-rgb-cyan bg-gray-800 text-white rounded-lg focus:ring-cyan-400 focus:border-cyan-400"></textarea>
+                        
+                        <!-- Pesan Feedback -->
+                        <div id="form-message" class="p-3 rounded-lg text-sm hidden"></div>
+                        
+                        <button type="submit" class="w-full bg-neon-primary text-gray-900 font-bold py-3 rounded-lg hover:bg-white transition duration-300 shadow-lg">Kirim Pesan</button>
+                    </form>
+                </div>
+
+                <!-- Informasi Kontak Tambahan -->
+                <div class="space-y-6 lg:border-l lg:pl-8 border-rgb-cyan">
+                    <h3 class="text-2xl font-semibold mb-4 text-white">Informasi Kontak Resmi</h3>
+                    
+                    <div>
+                        <p class="text-lg font-medium primary-color">Email Resmi</p>
+                        <p class="text-gray-300 break-words">smarttech@sekolah.edu</p>
+                    </div>
+
+                    <div>
+                        <p class="text-lg font-medium primary-color">Nomor Kontak (WA/Telp)</p>
+                        <p class="text-gray-300">+62 812-XXXX-YYYY</p>
+                    </div>
+
+                    <div>
+                        <p class="text-lg font-medium primary-color">Alamat Unit</p>
+                        <p class="text-gray-300">Gedung Unit Produksi, SMK Negeri [Nama Sekolah]</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Bagian 7: Footer -->
+    <footer id="footer" class="bg-black text-white py-8 border-t-4 border-rgb-green">
+        <div class="container mx-auto px-4 text-center">
+            <p class="mb-4">&copy; 2024 Smart-Tech Sekolah. Semua Hak Cipta Dilindungi.</p>
+            <div class="social-icons space-x-4 text-xl">
+                <a href="#" class="primary-color hover:text-white transition duration-300" aria-label="Instagram">📸</a>
+                <a href="#" class="primary-color hover:text-white transition duration-300" aria-label="Facebook">👍</a>
+                <a href="#" class="primary-color hover:text-white transition duration-300" aria-label="LinkedIn">🔗</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.getElementById('menu-toggle');
+            const navMenu = document.getElementById('nav-menu');
+            const contactForm = document.getElementById('contact-form');
+            const formMessage = document.getElementById('form-message');
+
+            // 2. Toggle Menu Mobile
+            menuToggle.addEventListener('click', function() {
+                navMenu.classList.toggle('hidden');
+                navMenu.classList.toggle('active');
+            });
+
+            // 1. Smooth Scrolling & Menutup Menu Mobile
+            document.querySelectorAll('#nav-menu a').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    document.querySelector(targetId).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                    
+                    // Tutup menu setelah klik pada mobile
+                    if (window.innerWidth < 1024) {
+                        navMenu.classList.add('hidden');
+                        navMenu.classList.remove('active');
+                    }
+                });
+            });
+
+            // 3. Validasi Form Dasar (Simulasi Pengiriman)
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const name = document.getElementById('name').value.trim();
+                const email = document.getElementById('email').value.trim();
+                const subject = document.getElementById('subject').value.trim();
+                const message = document.getElementById('message').value.trim();
+
+                // Validasi sederhana
+                if (!name || !email || !subject || !message) {
+                    formMessage.classList.remove('hidden', 'bg-green-700', 'text-gray-900');
+                    formMessage.classList.add('bg-red-700', 'text-white');
+                    formMessage.innerHTML = '⚠️ Semua kolom wajib diisi.';
+                    return;
+                }
+                
+                // Validasi format email dasar
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(email)) {
+                    formMessage.classList.remove('hidden', 'bg-green-700', 'text-gray-900');
+                    formMessage.classList.add('bg-red-700', 'text-white');
+                    formMessage.innerHTML = '⚠️ Format email tidak valid.';
+                    return;
+                }
+
+                // SIMULASI pengiriman sukses
+                setTimeout(() => {
+                    formMessage.classList.remove('hidden', 'bg-red-700', 'text-white');
+                    formMessage.classList.add('bg-green-700', 'text-gray-900');
+                    formMessage.innerHTML = '✅ Pesan terkirim! Tim Smart-Tech akan segera memproses permintaan Anda.';
+                    contactForm.reset(); // Kosongkan form
+                    
+                    // Sembunyikan pesan sukses setelah 5 detik
+                    setTimeout(() => {
+                        formMessage.classList.add('hidden');
+                    }, 5000);
+                }, 1000);
+            });
+        });
+    </script>
+</body>
+</html>
